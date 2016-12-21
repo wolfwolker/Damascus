@@ -11,10 +11,10 @@ namespace Damascus;
 interface MiddlewareInterface
 {
     /**
-     * @param \Damascus\CommandInterface $command
+     * @param \Damascus\DataBucketInterface $dataBucket
      * @param \Damascus\MiddlewareStep $next
      *
      * @return void
      */
-    public function run(CommandInterface $command, MiddlewareStep $next);
+    public function run(DataBucketInterface $dataBucket, MiddlewareStep $next);
 }

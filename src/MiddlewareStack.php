@@ -26,23 +26,27 @@ class MiddlewareStack
      * Pushes new middlewares to the stack. First pushed middleware will be the outest layer (the first one executed)
      *
      * @param \Damascus\MiddlewareInterface $middleware
+     *
+     * @return $this
      */
     public function pushMiddleware(MiddlewareInterface $middleware)
     {
         $this->stack[] = $middleware;
+
+        return $this;
     }
 
     /**
      * It starts the chain.
      *
-     * @param \Damascus\CommandInterface $command
+     * @param \Damascus\DataBucketInterface $dataBucket
      */
-    public function run(CommandInterface $command)
+    public function run(DataBucketInterface $dataBucket)
     {
         $middleware = reset($this->stack);
 
         if (false !== $middleware) {
-            $middleware->run($command, $this->next);
+            $middleware->run($dataBucket, $this->next);
         }
     }
 }

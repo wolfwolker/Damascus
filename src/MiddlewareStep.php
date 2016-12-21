@@ -26,14 +26,14 @@ class MiddlewareStep
     /**
      * It runs the next middleware in the stack
      *
-     * @param \Damascus\CommandInterface $command
+     * @param \Damascus\DataBucketInterface $dataBucket
      */
-    public function run(CommandInterface $command)
+    public function run(DataBucketInterface $dataBucket)
     {
         $middleware = next($this->stack);
 
         if (false !== $middleware) {
-            $middleware->run($command, $this);
+            $middleware->run($dataBucket, $this);
         }
     }
 }

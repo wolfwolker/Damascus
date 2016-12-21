@@ -2,10 +2,10 @@
 
 namespace spec\Damascus;
 
-use Damascus\CommandInterface;
+use Damascus\DataBucketInterface;
 use Damascus\MiddlewareInterface;
 use Damascus\MiddlewareStep;
-use Damascus\SimpleCommand;
+use Damascus\DataBucket;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -16,12 +16,12 @@ class MiddlewareStackSpec extends ObjectBehavior
         $this->pushMiddleware($middleware);
     }
 
-    function it_runs_a_stacked_middleware(MiddlewareInterface $middleware, CommandInterface $command)
+    function it_runs_a_stacked_middleware(MiddlewareInterface $middleware, DataBucketInterface $dataBucket)
     {
         $this->it_allows_to_push_middlewares($middleware);
 
-        $middleware->run($command, Argument::type(MiddlewareStep::class));
+        $middleware->run($dataBucket, Argument::type(MiddlewareStep::class));
 
-        $this->run($command);
+        $this->run($dataBucket);
     }
 }
