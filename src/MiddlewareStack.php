@@ -16,7 +16,7 @@ class MiddlewareStack
     /** @var  MiddlewareStep */
     private $next;
 
-    public function __construct(array $middlewares = [])
+    public function __construct(MiddlewareInterface ...$middlewares)
     {
         $this->stack = [];
         foreach ($middlewares as $middleware) {
