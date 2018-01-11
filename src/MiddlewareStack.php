@@ -16,9 +16,12 @@ class MiddlewareStack
     /** @var  MiddlewareStep */
     private $next;
 
-    public function __construct()
+    public function __construct(array $middlewares = [])
     {
         $this->stack = [];
+        foreach ($middlewares as $middleware) {
+            $this->pushMiddleware($middleware);
+        }
         $this->next = new MiddlewareStep($this->stack);
     }
 
