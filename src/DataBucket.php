@@ -27,7 +27,7 @@ class DataBucket implements DataBucketInterface, \ArrayAccess
      */
     public function offsetExists($offset)
     {
-        return isset($this->data['offset']);
+        return isset($this->data[$offset]);
     }
 
     /**
