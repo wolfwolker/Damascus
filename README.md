@@ -60,6 +60,3 @@ $stack->run($dataBucket);
 - Create so many middlewares as you need. You can use DIC to reuse them and to add them dependencies.
 - You can use DIC also to reuse a middlewares stack.
 - You can create your custom DataBucketInterface as you want with the data you need, and ensure is the right one in your middlewares.
-
-## Future
-I would like to create in a near future a Symfony bundle for this, allowing, using DIC tags to automatically generate middleware stacks.
